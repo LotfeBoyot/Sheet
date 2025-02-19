@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: app:01
+    ports:
+      - "8000:8000"
+        #      - "5051:8072"
+    restart: unless-stopped
+    env_file:
+      - .env
