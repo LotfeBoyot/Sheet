@@ -47,6 +47,9 @@ class Command(BaseCommand):
                 bulk_excel_id=valid_row.id,
                 excel_batch_id=valid_row.batch_id,
             )
+        else:
+            owner.notification_tel = valid_row.notification_telephone if valid_row.notification_telephone not in [None, ''] else user.notification_tel
+            owner.save()
         return owner
 
     def storePayer(self, row):
@@ -99,6 +102,22 @@ class Command(BaseCommand):
                 bulk_excel_id=row.id,
                 excel_batch_id=row.batch_id
             )
+        else:
+            payer.name = row.payer_name if row.payer_name not in [None, ''] else payer.name
+            payer.email = row.payer_email if row.payer_email not in [None, ''] else payer.email
+            payer.tel1 = row.payer_telephone_1 if row.payer_telephone_1 not in [None, ''] else payer.tel1
+            payer.tel2 = row.payer_telephone_2 if row.payer_telephone_2 not in [None, ''] else payer.tel2
+            payer.tel3 = row.payer_telephone_3 if row.payer_telephone_3 not in [None, ''] else payer.tel3
+            payer.notification_tel = row.notification_telephone if row.notification_telephone not in [None, ''] else payer.notification_tel
+            payer.actor_number = row.payer_number if row.payer_number not in [None, ''] else payer.actor_number
+            payer.nationalid = row.national_id if row.national_id not in [None, ''] else payer.nationalid
+            payer.bulk_excel_id = row.id if row.id not in [None, ''] else payer.bulk_excel_id
+            payer.excel_batch_id = row.batch_id if row.batch_id not in [None, ''] else payer.excel_batch_id
+            payer.save()
+
+            user.notification_tel = row.notification_telephone if row.notification_telephone not in [None, ''] else user.notification_tel
+            user.save()
+
         return payer
 
     def storeBuilding(self, row):
