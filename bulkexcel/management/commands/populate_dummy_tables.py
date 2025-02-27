@@ -279,7 +279,7 @@ class Command(BaseCommand):
                     invoice=invoice,
                     invoice_uuid=invoice_uuid,
                     invoice_short_uuid=invoice_short_uuid,
-                    invoice_url=f"{os.getenv('APP_URL')}{invoice_short_uuid}",
+                    invoice_url=f"https://{os.getenv('APP_URL')}{invoice_short_uuid}",
                     active=1,
                     bulk_excel_id=row.id,
                     excel_batch_id=row.batch_id
