@@ -102,6 +102,7 @@ class Command(BaseCommand):
                 bulk_excel_id=row.id,
                 excel_batch_id=row.batch_id
             )
+            
         else:
             payer.name = row.payer_name if row.payer_name not in [None, ''] else payer.name
             payer.email = row.payer_email if row.payer_email not in [None, ''] else payer.email
