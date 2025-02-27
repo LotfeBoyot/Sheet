@@ -343,7 +343,7 @@ class Command(BaseCommand):
                     contract = self.storeContract(valid_row, payer, unit)
                     invoice = self.storeInvoice(valid_row, contract)
 
-                    if payer.notification_tel:
+                    if payer.notification_tel and invoice:
                         self.createInvoiceSendReminder(invoice, payer, contract)
 
                     valid_row.status = 'SUCCESS'
